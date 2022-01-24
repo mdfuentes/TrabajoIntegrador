@@ -2,6 +2,7 @@ package softtek.proyecto.proyectoIntegrador.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
+import softtek.proyecto.proyectoIntegrador.entities.Producto;
 import softtek.proyecto.proyectoIntegrador.entities.Proveedor;
 
 import javax.persistence.Column;
@@ -14,6 +15,18 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class ProductoDTO {
+
+    public ProductoDTO(){}
+
+    public ProductoDTO(Producto p) {
+        this.id = p.getId();
+        this.nombre = p.getNombre();
+        this.precio = p.getPrecio();
+        this.stock = p.getStock();
+        this.idProveedor = p.getProveedor().getId();
+        this.nombreProveedor = p.getProveedor().getNombre();
+    }
+
     private Integer id;
 
     @NotNull(message = "El nombre debe completarse")

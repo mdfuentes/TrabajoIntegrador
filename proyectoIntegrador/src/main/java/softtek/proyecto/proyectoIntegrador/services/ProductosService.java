@@ -34,8 +34,10 @@ public class ProductosService {
         return convertirProductosADTO(repositorioProductos.findAll());
     }
 
-    public Page<Producto> getPaginacionProductos(int page, int size){
-        return  repositorioProductos.findAll(PageRequest.of(page, size));
+    public Page<ProductoDTO> getPaginacionProductos(int page, int size){
+        Page<Producto> producto = repositorioProductos.findAll(PageRequest.of(page, size));
+        Page<ProductoDTO> dtoPage =  producto.map(product -> new ProductoDTO(product));
+        return dtoPage;
     }
 
     public String borrarProducto(int id){

@@ -25,7 +25,7 @@ public class ControllerProductos {
     }
 
     @GetMapping("/page/{page}")
-    public Page<Producto> findProductosPaginados(@PathVariable int page) {
+    public Page<ProductoDTO> findProductosPaginados(@PathVariable int page) {
         return  productosService.getPaginacionProductos(page, 10);
     }
 

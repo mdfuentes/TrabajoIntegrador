@@ -28,12 +28,12 @@ public class Producto {
     @Column
     private Integer stock;
 
-    @JsonBackReference
+
     @ManyToOne(targetEntity = Proveedor.class)
     @JoinColumn(name = "id_proveedor", referencedColumnName = "id")
     private Proveedor proveedor;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "producto")
     private List<DetalleOrden> detalleOrdenList;
 

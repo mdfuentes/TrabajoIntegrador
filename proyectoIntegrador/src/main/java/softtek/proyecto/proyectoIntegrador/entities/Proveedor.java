@@ -25,7 +25,7 @@ public class Proveedor {
     @Column
     private String direccion;
 
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "proveedor")
     private List<Producto> productos;
 
