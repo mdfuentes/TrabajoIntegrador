@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Proveedor {
+
     @Id
     @GeneratedValue
     @Column
@@ -26,7 +27,7 @@ public class Proveedor {
     private String direccion;
 
 
-    @OneToMany(mappedBy = "proveedor")
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
     private List<Producto> productos;
 
     @ManyToMany

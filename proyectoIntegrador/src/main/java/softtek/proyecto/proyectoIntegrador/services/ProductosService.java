@@ -3,6 +3,7 @@ package softtek.proyecto.proyectoIntegrador.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import softtek.proyecto.proyectoIntegrador.DTO.ProductoDTO;
 import softtek.proyecto.proyectoIntegrador.entities.Producto;
@@ -35,7 +36,7 @@ public class ProductosService {
     }
 
     public Page<ProductoDTO> getPaginacionProductos(int page, int size){
-        Page<Producto> producto = repositorioProductos.findAll(PageRequest.of(page, size));
+        Page<Producto> producto = repositorioProductos.findAll(PageRequest.of(page, size, Sort.by("id")));
         Page<ProductoDTO> dtoPage =  producto.map(product -> new ProductoDTO(product));
         return dtoPage;
     }
