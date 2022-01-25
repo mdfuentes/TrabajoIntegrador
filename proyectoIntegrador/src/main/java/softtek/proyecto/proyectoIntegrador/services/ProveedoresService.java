@@ -48,11 +48,13 @@ public class ProveedoresService {
         return "Proveedor eliminado";
     }
 
-    public Proveedor editarProveedor(Proveedor p){
-        Proveedor proveedorExistente = repositorioProveedor.findById(p.getId()).orElse(null);
-        proveedorExistente.setNombre(p.getNombre());
-        proveedorExistente.setDireccion(p.getDireccion());
-        return repositorioProveedor.save(proveedorExistente);
+    public ProveedorDTO editarProveedor(ProveedorDTO p, int id){
+        Proveedor proveedorDTO = convertirDTOAProveedor(p);
+        Proveedor proveedorExistente = repositorioProveedor.findById(id).orElse(null);
+        proveedorExistente.setNombre(proveedorDTO.getNombre());
+        proveedorExistente.setDireccion(proveedorDTO.getDireccion());
+        repositorioProveedor.save(proveedorExistente);
+        return p;
     }
 
     public ProveedorDTO convertirProveedorADTO(Proveedor p){

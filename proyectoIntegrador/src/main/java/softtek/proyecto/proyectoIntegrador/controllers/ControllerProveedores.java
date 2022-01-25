@@ -37,9 +37,9 @@ public class ControllerProveedores {
         return proveedoresService.guardarProveedor(p);
     }
 
-    @PutMapping("/")
-    public Proveedor updateProveedor(@RequestBody Proveedor p){
-        return proveedoresService.editarProveedor(p);
+    @PutMapping("/{id}")
+    public ProveedorDTO updateProveedor(@RequestBody ProveedorDTO p, @PathVariable int id){
+        return proveedoresService.editarProveedor(p, id);
     }
 
     @DeleteMapping("/{id}")
