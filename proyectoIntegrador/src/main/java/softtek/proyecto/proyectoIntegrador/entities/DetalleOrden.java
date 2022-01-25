@@ -16,9 +16,6 @@ public class DetalleOrden {
     private Integer id;
 
     @Column
-    private Integer stock;
-
-    @Column
     private double precio;
 
     @ManyToOne(targetEntity = Producto.class)

@@ -2,6 +2,7 @@ package softtek.proyecto.proyectoIntegrador.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import softtek.proyecto.proyectoIntegrador.DTO.OrdenDTO;
 import softtek.proyecto.proyectoIntegrador.entities.Orden;
 import softtek.proyecto.proyectoIntegrador.services.OrdenesService;
 
@@ -15,23 +16,23 @@ public class ControllerOrdenes {
     OrdenesService ordenesService;
 
     @GetMapping("/")
-    public List<Orden> findOrdenes(){
+    public List<OrdenDTO> findOrdenes(){
         return ordenesService.getOrdenes();
     }
 
     @GetMapping("/{id}")
-    public Orden findOrden(@PathVariable int id){
+    public OrdenDTO findOrden(@PathVariable int id){
         return ordenesService.getOrden(id);
     }
 
     @PostMapping("/")
-    public Orden addOrden(@RequestBody Orden o){
+    public OrdenDTO addOrden(@RequestBody OrdenDTO o){
         return ordenesService.guardarOrden(o);
     }
 
-    @PutMapping("/")
-    public Orden updateOrden(@RequestBody Orden o){
-        return ordenesService.editarOrden(o);
+    @PutMapping("/{id}")
+    public OrdenDTO updateOrden(@RequestBody OrdenDTO o, @PathVariable int id){
+        return ordenesService.editarOrden(o, id);
     }
 
     @DeleteMapping("/{id}")
