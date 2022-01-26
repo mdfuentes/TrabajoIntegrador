@@ -10,6 +10,8 @@ import java.util.List;
 
 
 @RequestMapping("/ordenes")
+
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 public class ControllerOrdenes {
     @Autowired

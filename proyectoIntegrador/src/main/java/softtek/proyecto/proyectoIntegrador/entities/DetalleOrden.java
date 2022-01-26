@@ -18,6 +18,9 @@ public class DetalleOrden {
     @Column
     private double precio;
 
+    @Column
+    private Integer cantidad;
+
     @ManyToOne(targetEntity = Producto.class)
     @JoinColumn(name = "id_producto", referencedColumnName = "id")
     private Producto producto;

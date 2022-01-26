@@ -41,6 +41,7 @@ public class DetalleOrdenesService {
         DetalleOrden detalleDTO = convertirDTOADetalle(detalle);
         DetalleOrden detalleExistente = repositorioDetalleOrdenes.findById(id).orElse(null);
         detalleExistente.setPrecio(detalleDTO.getPrecio());
+        detalleExistente.setCantidad(detalleDTO.getCantidad());
         detalleExistente.setOrden(detalleDTO.getOrden());
         detalleExistente.setProducto(detalleDTO.getProducto());
         repositorioDetalleOrdenes.save(detalleExistente);
@@ -57,6 +58,7 @@ public class DetalleOrdenesService {
         Producto producto;
         Orden orden;
         detalle.setPrecio(dto.getPrecio());
+        detalle.setCantidad(dto.getCantidad());
         producto = repositorioProductos.findById(dto.getIdProducto()).get();
         orden = repositorioOrdenes.findById(dto.getIdOrden()).get();
         detalle.setProducto(producto);

@@ -11,6 +11,7 @@ import softtek.proyecto.proyectoIntegrador.repositories.RepositorioEmpleados;
 import softtek.proyecto.proyectoIntegrador.repositories.RepositorioOrdenes;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,8 +32,10 @@ public class OrdenesService {
     }
 
     public OrdenDTO guardarOrden(OrdenDTO o){
-        repositorioOrdenes.save(convertirDTOAOrden(o));
-        return o;
+        Orden orden = convertirDTOAOrden(o);
+        orden = repositorioOrdenes.save(convertirDTOAOrden(o));
+        o.setId(orden.getId());
+        return o ;
     }
 
     public OrdenDTO editarOrden(OrdenDTO o, int id){

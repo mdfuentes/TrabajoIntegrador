@@ -14,12 +14,15 @@ public class DetalleOrdenDTO {
         this.id = detalle.getId();
         this.precio = detalle.getPrecio();
         this.idProducto = detalle.getProducto().getId();
+        this.cantidad = detalle.getCantidad();
         this.idOrden = detalle.getOrden().getId();
 
     }
     private Integer id;
 
     private double precio;
+
+    private Integer cantidad;
 
     private Integer idProducto;
 
