@@ -9,6 +9,7 @@ import softtek.proyecto.proyectoIntegrador.services.ClientesService;
 import java.util.List;
 
 @RequestMapping("/clientes")
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 public class ControllerClientes {
     @Autowired

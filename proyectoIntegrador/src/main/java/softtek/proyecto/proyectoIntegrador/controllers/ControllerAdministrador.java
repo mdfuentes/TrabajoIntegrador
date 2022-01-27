@@ -9,6 +9,7 @@ import java.util.List;
 
 @RequestMapping("/admin")
 
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 public class ControllerAdministrador {
     @Autowired
