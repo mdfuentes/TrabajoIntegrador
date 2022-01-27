@@ -33,8 +33,14 @@ public class DetalleOrdenesService {
     }
 
     public DetalleOrdenDTO guardarDetalleOrden(DetalleOrdenDTO detalle){
-        repositorioDetalleOrdenes.save(convertirDTOADetalle(detalle));
-        return detalle;
+        Producto producto = repositorioProductos.findById(detalle.getIdProducto()).get();
+        if (producto.getStock() >= detalle.getCantidad()) {
+            repositorioDetalleOrdenes.save(convertirDTOADetalle(detalle));
+            int nuevoStock = producto.getStock() - detalle.getCantidad();
+            producto.setStock(nuevoStock);
+            repositorioProductos.save(producto);
+        }
+            return detalle;
     }
 
     public DetalleOrdenDTO editarDetalleOrden(DetalleOrdenDTO detalle, int id){
