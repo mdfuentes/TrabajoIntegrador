@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequestMapping("/ordenes")
 
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = "*")
 @RestController
 public class ControllerOrdenes {
     @Autowired

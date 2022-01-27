@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import softtek.proyecto.proyectoIntegrador.entities.AuthRequest;
 import softtek.proyecto.proyectoIntegrador.util.JwtUtil;
 
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = "*")
 @RestController
 public class WelcomeController {
     @Autowired

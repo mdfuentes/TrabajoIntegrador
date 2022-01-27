@@ -11,7 +11,7 @@ import softtek.proyecto.proyectoIntegrador.services.ProveedoresService;
 import java.util.List;
 
 @RequestMapping("/proveedores")
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = "*")
 @RestController
 public class ControllerProveedores {
     @Autowired

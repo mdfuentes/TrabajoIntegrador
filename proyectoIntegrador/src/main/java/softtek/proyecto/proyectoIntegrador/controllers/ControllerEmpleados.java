@@ -9,7 +9,7 @@ import softtek.proyecto.proyectoIntegrador.services.EmpleadosService;
 import java.util.List;
 
 @RequestMapping("/empleados")
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = "*")
 @RestController
 public class ControllerEmpleados {
     @Autowired
