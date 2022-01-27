@@ -8,32 +8,33 @@ import softtek.proyecto.proyectoIntegrador.services.EmpleadosService;
 
 import java.util.List;
 
-@RequestMapping
+@RequestMapping("/empleados")
+@RestController
 public class ControllerEmpleados {
     @Autowired
     EmpleadosService empleadosService;
 
-    @RequestMapping("/empleados")
+    @GetMapping("/")
     public List<Empleado> findEmpleados(){
         return empleadosService.getEmpleados();
     }
 
-    @GetMapping("/emmpleados/{id}")
+    @GetMapping("/{id}")
     public Empleado findEmpleado(@PathVariable int id){
         return empleadosService.getEmpleado(id);
     }
 
-    @PostMapping("/empleados")
+    @PostMapping("/")
     public Empleado addEmpleado(@RequestBody Empleado e){
         return empleadosService.guardarEmpleado(e);
     }
 
-    @PutMapping("/empleados")
+    @PutMapping("/")
     public Empleado updateEmpleado(@RequestBody Empleado e){
         return empleadosService.editarEmpleado(e);
     }
 
-    @DeleteMapping("/empleados/{id}")
+    @DeleteMapping("/{id}")
     public String deleteEmpleado(@PathVariable int id){
         return empleadosService.borrarEmpleado(id);
     }

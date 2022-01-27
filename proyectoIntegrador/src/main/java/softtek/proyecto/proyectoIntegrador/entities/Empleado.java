@@ -10,23 +10,13 @@ import java.util.List;
 @Table(name = "empleado")
 @Setter
 @Getter
-public class Empleado {
-    @Id
-    @GeneratedValue
-    @Column
-    private Integer id;
+public class Empleado extends Usuario{
 
-    @Column
-    private String nombre;
-
-    @Column
-    private String apellido;
-
-    @OneToOne(targetEntity = Empleado.class)
+  /*  @OneToOne(targetEntity = Empleado.class)
     @JoinColumn(name = "id_supervisor")
-    private Empleado supervisor;
+    private Empleado supervisor;*/
 
-    @OneToMany(mappedBy = "empleado")
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
     private List<Orden> orden;
 
 

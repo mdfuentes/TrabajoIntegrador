@@ -29,7 +29,7 @@ public class EmpleadosService {
         empleadoExistente.setNombre(e.getNombre());
         empleadoExistente.setApellido(e.getApellido());
         empleadoExistente.setOrden(e.getOrden());
-        empleadoExistente.setSupervisor(e.getSupervisor());
+     //   empleadoExistente.setSupervisor(e.getSupervisor());
         return repository.save(empleadoExistente);
     }
 

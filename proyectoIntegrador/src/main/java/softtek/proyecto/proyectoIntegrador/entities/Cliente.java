@@ -10,17 +10,7 @@ import java.util.List;
 @Table (name = "cliente")
 @Getter
 @Setter
-public class Cliente {
-    @Id
-    @GeneratedValue
-    @Column
-    private Integer id;
-
-    @Column
-    private String nombre;
-
-    @Column
-    private String apellido;
+public class Cliente extends Usuario{
 
     @Column(name = "razon_social")
     private String razonSocial;
@@ -31,7 +21,7 @@ public class Cliente {
     private String TipoCliente; //VER ENUM
             //TODO
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Orden> orden;
 
 }
