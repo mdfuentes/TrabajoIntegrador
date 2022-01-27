@@ -15,7 +15,7 @@ public class WelcomeController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
-
+//a
     @GetMapping("/")
     public String welcome(){
         return "Welcome";
