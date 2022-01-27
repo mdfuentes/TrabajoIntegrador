@@ -1,4 +1,4 @@
-package softtek.proyecto.proyectoIntegrador.filter;
+package softtek.proyecto.proyectoIntegrador.exceptions.filter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

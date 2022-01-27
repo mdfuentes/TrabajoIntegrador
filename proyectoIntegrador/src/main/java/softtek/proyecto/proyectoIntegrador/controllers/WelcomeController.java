@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+import softtek.proyecto.proyectoIntegrador.DTO.UsuarioDTO;
 import softtek.proyecto.proyectoIntegrador.entities.AuthRequest;
 import softtek.proyecto.proyectoIntegrador.util.JwtUtil;
 
@@ -22,7 +23,7 @@ public class WelcomeController {
     }
 
     @PostMapping("/auth")
-    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+    public UsuarioDTO generateToken(@RequestBody AuthRequest authRequest) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsuario(), authRequest.getContraseña())

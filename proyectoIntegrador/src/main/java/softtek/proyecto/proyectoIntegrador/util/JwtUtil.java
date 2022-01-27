@@ -3,8 +3,12 @@ package softtek.proyecto.proyectoIntegrador.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import softtek.proyecto.proyectoIntegrador.DTO.UsuarioDTO;
+import softtek.proyecto.proyectoIntegrador.entities.Usuario;
+import softtek.proyecto.proyectoIntegrador.repositories.RepositorioUsuarios;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +17,9 @@ import java.util.function.Function;
 
 @Service
 public class JwtUtil {
+
+    @Autowired
+    RepositorioUsuarios repositorioUsuarios;
 
     private String secret = "matias";
 
@@ -36,10 +43,13 @@ public class JwtUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    public String generateToken(String username) {
+    public UsuarioDTO generateToken(String username) {
+        UsuarioDTO usuarioDTO;
+        usuarioDTO = convertirUsuarioaDTO(repositorioUsuarios.findByUsuario(username));
         Map<String, Object> claims = new HashMap<>();
         String token = createToken(claims, username);
-        return token;
+        usuarioDTO.setToken(token);
+        return usuarioDTO;
     }
 
     private String createToken(Map<String, Object> claims, String subject) {
@@ -52,5 +62,14 @@ public class JwtUtil {
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    private UsuarioDTO convertirUsuarioaDTO(Usuario usuario){
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setId(usuario.getId());
+        usuarioDTO.setUsuario(usuario.getUsuario());
+        usuarioDTO.setApellido(usuario.getApellido());
+        usuarioDTO.setNombre(usuario.getNombre());
+        return usuarioDTO;
     }
 }
