@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import softtek.proyecto.proyectoIntegrador.DTO.ClienteDTO;
 import softtek.proyecto.proyectoIntegrador.entities.Cliente;
 import softtek.proyecto.proyectoIntegrador.entities.Orden;
+import softtek.proyecto.proyectoIntegrador.entities.enumRol;
 import softtek.proyecto.proyectoIntegrador.repositories.RepositorioClientes;
 import softtek.proyecto.proyectoIntegrador.repositories.RepositorioOrdenes;
 
@@ -56,6 +57,7 @@ public class ClientesService {
         cliente.setRazonSocial(dto.getRazonSocial());
         cliente.setUsuario(dto.getUsuario());
         cliente.setContraseña(dto.getContraseña());
+        cliente.setRol(enumRol.CLIENTE);
         return cliente;
     }
 
@@ -68,6 +70,7 @@ public class ClientesService {
         dto.setRazonSocial(cliente.getRazonSocial());
         dto.setUsuario(cliente.getUsuario());
         dto.setContraseña(cliente.getContraseña());
+        dto.setRol("CLIENTE");
         return dto;
     }
 

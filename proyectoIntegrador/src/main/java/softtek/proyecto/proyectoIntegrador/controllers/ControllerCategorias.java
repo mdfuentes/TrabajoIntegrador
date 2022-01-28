@@ -8,7 +8,7 @@ import softtek.proyecto.proyectoIntegrador.services.CategoriasService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ControllerCategorias {
     @Autowired

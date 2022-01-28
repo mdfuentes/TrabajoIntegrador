@@ -17,4 +17,7 @@ public class UsuarioDTO {
     private String apellido;
 
     private String token;
+
+    private String rol;
+
 }

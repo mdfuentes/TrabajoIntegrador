@@ -47,14 +47,15 @@ public class JwtUtil {
         UsuarioDTO usuarioDTO;
         usuarioDTO = convertirUsuarioaDTO(repositorioUsuarios.findByUsuario(username));
         Map<String, Object> claims = new HashMap<>();
-        String token = createToken(claims, username);
+        String token = createToken(claims, usuarioDTO.getId());
+
         usuarioDTO.setToken(token);
         return usuarioDTO;
     }
 
-    private String createToken(Map<String, Object> claims, String subject) {
+    private String createToken(Map<String, Object> claims, int subject) {
 
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+        return Jwts.builder().setClaims(claims).setSubject(String.valueOf(subject)).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(SignatureAlgorithm.HS256, secret).compact();
     }
@@ -70,6 +71,7 @@ public class JwtUtil {
         usuarioDTO.setUsuario(usuario.getUsuario());
         usuarioDTO.setApellido(usuario.getApellido());
         usuarioDTO.setNombre(usuario.getNombre());
+        usuarioDTO.setRol(usuario.getRol().toString());
         return usuarioDTO;
     }
 }

@@ -8,7 +8,7 @@ import softtek.proyecto.proyectoIntegrador.services.DetalleOrdenesService;
 import java.util.List;
 
 @RequestMapping("/detalles")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ControllerDetalleOrdenes {
     @Autowired

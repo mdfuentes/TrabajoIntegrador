@@ -29,6 +29,7 @@ public class Usuario {
     @Column
     private String apellido;
 
-
+    @Enumerated(EnumType.STRING)
+    private enumRol rol;
 
 }
