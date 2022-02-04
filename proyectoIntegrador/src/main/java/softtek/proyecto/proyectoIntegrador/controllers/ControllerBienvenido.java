@@ -10,7 +10,7 @@ import softtek.proyecto.proyectoIntegrador.util.JwtUtil;
 
 @CrossOrigin(origins = "*")
 @RestController
-public class WelcomeController {
+public class ControllerBienvenido {
     @Autowired
     private JwtUtil jwtUtil;
 
